@@ -14,7 +14,7 @@ jobs:
       id: unit_test
       run: |
         echo "Unin test"
-        echo "image_name=IMAGE" >> $GITHUB_ENV
+        echo "image_name=IMAGE" >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-22.04
