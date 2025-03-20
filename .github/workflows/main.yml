@@ -7,15 +7,23 @@ on:
 jobs:
   test:
     runs-on: ubuntu-22.04
+    outputs:
+      image_name: ${{ steps.unit_test.outputs.image_name }}
     steps:
     - name: Unit test
+      id: unit_test
       run: |
         echo "Unin test"
-        echo "MY_ENV_VAR=VALUE" >> $GITHUB_ENV
+        echo "image_name=IMAGE" >> $GITHUB_ENV
+
   build:
     runs-on: ubuntu-22.04
     steps:
     - name: Build
+      id: build
+      env:
+        image_name: ${{ needs.test.outputs.image_name }}
       run: |
-        echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
+        echo "image_name: ${{ needs.test.outputs.image_name }}"
+        echo "The value of image_name is $image_name"
   
