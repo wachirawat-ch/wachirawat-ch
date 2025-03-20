@@ -26,7 +26,7 @@ jobs:
       env:
         image_name: ${{ needs.test.outputs.image_name }}
       run: |
-        echo "image_name: ${{ test.steps.unit_test.outputs.image_name }}"
+        echo "image_name: ${{ test.outputs.image_name }}"
         echo "image_name: ${{ needs.test.outputs.image_name }}"
         echo "The value of image_name is $image_name"
   
